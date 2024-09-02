@@ -1,5 +1,9 @@
+import javax.imageio.ImageIO;
 import javax.swing.*;
 import java.awt.*;
+import java.awt.image.BufferedImage;
+import java.io.File;
+import java.io.IOException;
 
 /* Se define una nueva clase llamada WeatherAppGui que hereda de JFrame.
 Esto significa que nuestra clase representa una ventana (frame) en la aplicación. */
@@ -28,7 +32,7 @@ public class WeatherAppGui extends JFrame {
     }
 
     private void addGuiComponents() {
-        // campo de búsqueda
+    // campo de búsqueda
         JTextField searchTextField = new JTextField();
 
         // configuramos la locación y tamaño de nuestro componente
@@ -38,5 +42,23 @@ public class WeatherAppGui extends JFrame {
         searchTextField.setFont(new Font("Dialog", Font.PLAIN, 24));
 
         add(searchTextField);
+
+    //botón de búsqueda
+        JButton searchButton = new JButton(loadImage("src/assets/search.png"));
+    }
+
+       // esto lo usamos para crear imagenes en nuestros componentes
+    private ImageIcon loadImage(String resourcePath) {
+        try{
+            //leer la imagen de la ruta que le dimos
+            BufferedImage image = ImageIO.read(new File(resourcePath));
+
+            // nos devuelve un icono para que nuestro componente pueda renderizarlo
+            return new ImageIcon(image);
+        }catch(IOException e){
+            e.printStackTrace();
+        }
+        System.out.println("no se pudo encontrar el recurso");
+        return null;
     }
 }
