@@ -1,5 +1,3 @@
-package assets;
-
 import javax.swing.*;
 
 public class AppLauncher {
@@ -8,7 +6,8 @@ public class AppLauncher {
             @Override
             public void run() {
                 // da inicio a nuestra app, cuando run() sea llamado la app iniciará
+                new WeatherAppGui().setVisible(true);
             }
-        })
+        });
     }
 }
