@@ -4,6 +4,7 @@ import java.awt.*;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
+import java.awt.Cursor;
 
 /* Se define una nueva clase llamada WeatherAppGui que hereda de JFrame.
 Esto significa que nuestra clase representa una ventana (frame) en la aplicación. */
@@ -45,7 +46,14 @@ public class WeatherAppGui extends JFrame {
 
     //botón de búsqueda
         JButton searchButton = new JButton(loadImage("src/assets/search.png"));
+
+        add(searchButton);
+        //cambiamos el cursor para que tenga un hover sobre este botón
+        searchButton.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
+        searchButton.setBounds(375, 13, 47, 45);
     }
+
+
 
        // esto lo usamos para crear imagenes en nuestros componentes
     private ImageIcon loadImage(String resourcePath) {
